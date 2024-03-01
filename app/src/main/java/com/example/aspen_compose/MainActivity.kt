@@ -36,6 +36,8 @@ import com.example.aspen_compose.ui.theme.Aspen_composeTheme
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
@@ -58,7 +60,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyScreen() {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
     )
     {
         Image(
@@ -71,18 +74,18 @@ fun MyScreen() {
         AspenGreeting(modifier = Modifier
             .align(Alignment.TopCenter)
             .padding(
-                top = 80.dp
+                top = 85.dp
             )
         )
         PlanYourVacation(modifier = Modifier
             .align(Alignment.BottomStart)
             .padding(
                 start = 30.dp,
-                bottom = 120.dp
+                bottom = 125.dp
             )
         )
         ButtonExplore(modifier = Modifier
-            .height(100.dp)
+            .height(105.dp)
             .fillMaxWidth()
             .align(Alignment.BottomCenter)
             .padding(
@@ -107,7 +110,11 @@ fun AspenGreeting(modifier: Modifier) {
             Font(R.font.font_hiatus)
         ),
         color = Color.White,
-        fontSize = 140.sp
+        fontSize = 125.sp,
+        letterSpacing = TextUnit(
+            value = 12F,
+            TextUnitType.Sp
+        )
     )
     Text(
         text = "Aspen",
@@ -126,9 +133,9 @@ fun PreviewAspenGreeting() {
 fun PlanYourVacation(modifier: Modifier)
 {
     val textStyle = TextStyle(
-        fontWeight = FontWeight.ExtraBold,
+        fontWeight = FontWeight.Bold,
         fontFamily = FontFamily(
-            Font(R.font.font_montserrat_bold)
+            Font(R.font.font_montserrat_regular)
         ),
         color = Color.White
     )
@@ -137,7 +144,9 @@ fun PlanYourVacation(modifier: Modifier)
     ) {
         Text(
             text = "Plan your",
-            style = textStyle.copy(fontSize = 24.sp),
+            style = textStyle.copy(
+                fontSize = 24.sp,
+                fontWeight = FontWeight.ExtraLight),
         )
         Text(
             text = "Luxurious",
@@ -173,7 +182,8 @@ fun ButtonExplore(modifier: Modifier){
     )
     {
         Text(
-            text = "Explore"
+            text = "Explore",
+            fontSize = 21.sp
         )
     }
 }
