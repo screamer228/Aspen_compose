@@ -1,8 +1,5 @@
-package com.example.aspen_compose
+package com.example.aspen_compose.presentation.welcome_screen
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,8 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,42 +17,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
-import com.example.aspen_compose.ui.theme.Aspen_composeTheme
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            Aspen_composeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                )
-                {
-                    val navController = rememberNavController()
-
-                    MyScreen()
-                }
-            }
-        }
-    }
-}
+import androidx.compose.ui.unit.sp
+import com.example.aspen_compose.R
 
 @Composable
-fun MyScreen() {
+fun WelcomeScreen(onNavigateToMainScreen: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -91,16 +65,17 @@ fun MyScreen() {
                 start = 30.dp,
                 end = 30.dp,
                 bottom = 45.dp
-            )
+            ),
+            onNavigateToMainScreen = onNavigateToMainScreen
         )
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewMyScreen(){
-    MyScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewMyScreen(){
+//    MyScreen(onNavigateToMainScreen)
+//}
 
 @Composable
 fun AspenGreeting(modifier: Modifier) {
@@ -169,11 +144,11 @@ fun PreviewPlanYourVacation(){
 }
 
 @Composable
-fun ButtonExplore(modifier: Modifier){
+fun ButtonExplore(modifier: Modifier, onNavigateToMainScreen: () -> Unit){
     Button(
         onClick = {
-                     /*TODO*/
-                  },
+            onNavigateToMainScreen()
+        },
         modifier = modifier,
         enabled = true,
         shape = RoundedCornerShape(16.dp),
@@ -189,10 +164,4 @@ fun ButtonExplore(modifier: Modifier){
             fontSize = 21.sp
         )
     }
-}
-
-@Preview
-@Composable
-fun PreviewButtonExplore(){
-    ButtonExplore(Modifier)
 }

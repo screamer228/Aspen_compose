@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Aspen_compose</string>
+
+    <string name="aspen">Aspen</string>
     <string name="plan_your">Plan your</string>
     <string name="luxurious">Luxurious</string>
     <string name="vacation">Vacation</string>
     <string name="explore">Explore</string>
-    <string name="aspen">Aspen</string>
+
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="aspen_usa">Aspen, USA</string>
 </resources>
