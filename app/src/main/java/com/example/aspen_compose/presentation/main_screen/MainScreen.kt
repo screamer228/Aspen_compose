@@ -49,23 +49,24 @@ fun MainScreen(){
             .background(colorResource(R.color.white))
     )
     {
-        ExploreAspen(modifier = Modifier
+        ExploreAspen(
+            modifier = Modifier
             .align(Alignment.TopStart)
             .padding(
                 start = 16.dp,
                 top = 32.dp
             )
         )
-
-        Location(modifier = Modifier
+        Location(
+            modifier = Modifier
             .align(Alignment.TopEnd)
             .padding(
                 top = 32.dp,
                 end = 16.dp
             )
         )
-
-        SearchBar(modifier = Modifier
+        SearchBar(
+            modifier = Modifier
             .fillMaxWidth()
             .align(Alignment.TopCenter)
             .padding(
@@ -82,21 +83,24 @@ fun MainScreen(){
                     end = 16.dp
                 )
         )
-        Popular(modifier = Modifier
+        Popular(
+            modifier = Modifier
             .align(Alignment.TopStart)
             .padding(
                 start = 16.dp,
                 top = 280.dp
             )
         )
-        SeeAll(modifier = Modifier
+        SeeAll(
+            modifier = Modifier
             .align(Alignment.TopEnd)
             .padding(
                 top = 286.dp,
                 end = 16.dp
             )
         )
-        PopularLazyRow(modifier = Modifier
+        PopularLazyRow(
+            modifier = Modifier
             .align(Alignment.TopCenter)
             .padding(
                 top = 300.dp

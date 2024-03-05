@@ -3,6 +3,7 @@ package com.example.aspen_compose.presentation.main_screen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -29,13 +30,13 @@ import com.example.aspen_compose.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PopularLazyRow(modifier: Modifier) {
-    val dataList = listOf<CardData>(
-        CardData(
+    val dataList = listOf(
+        PopularCardData(
             R.drawable.img_alley_palace,
             "Alley Palace",
             "4.1"
         ),
-        CardData(
+        PopularCardData(
             R.drawable.img_coeurdes_alpes,
             "Coeurdes Alpes",
             "4.5"
@@ -65,7 +66,8 @@ fun PopularLazyRow(modifier: Modifier) {
                     Image(
                         painter = painterResource(item.imageId),
                         contentDescription = null,
-                        modifier = Modifier,
+                        modifier = Modifier
+                            .fillMaxSize(),
                         contentScale = ContentScale.Crop,
                         alignment = Alignment.TopCenter
                     )
@@ -109,15 +111,14 @@ fun PopularLazyRow(modifier: Modifier) {
                                 )
                         )
                         {
-                            Icon(
+                            Image(
                                 painter = painterResource(R.drawable.ic_star_light),
                                 contentDescription = null,
                                 modifier = Modifier
                                     .align(Alignment.CenterVertically)
                                     .padding(
                                         end = 6.dp
-                                    ),
-                                tint = colorResource(R.color.yellow_star_light)
+                                    )
                             )
                             Text(
                                 text = item.rating,
