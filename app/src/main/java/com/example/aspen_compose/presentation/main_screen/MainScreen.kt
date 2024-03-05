@@ -72,7 +72,7 @@ fun MainScreen(){
                 top = 125.dp
             )
         )
-        FilledTonalButtons(
+        RowTonalButtons(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.TopCenter)
@@ -81,6 +81,26 @@ fun MainScreen(){
                     top = 205.dp,
                     end = 16.dp
                 )
+        )
+        Popular(modifier = Modifier
+            .align(Alignment.TopStart)
+            .padding(
+                start = 16.dp,
+                top = 280.dp
+            )
+        )
+        SeeAll(modifier = Modifier
+            .align(Alignment.TopEnd)
+            .padding(
+                top = 286.dp,
+                end = 16.dp
+            )
+        )
+        PopularLazyRow(modifier = Modifier
+            .align(Alignment.TopCenter)
+            .padding(
+                top = 300.dp
+            )
         )
     }
 }
@@ -177,7 +197,7 @@ fun SearchBar(modifier: Modifier) {
         onValueChange = { value -> textState = value },
         modifier = modifier
             .padding(
-                horizontal = 20.dp
+                horizontal = 16.dp
             ),
         leadingIcon = {
             Icon(
@@ -206,20 +226,24 @@ fun PreviewSearchBar(){
 }
 
 @Composable
-fun FilledTonalButtons(modifier: Modifier) {
-    val buttonLabels = listOf("Location", "Hotels", "Food", "Adventure")
+fun RowTonalButtons(modifier: Modifier) {
+    val buttonLabels = listOf(
+        "Location",
+        "Hotels", "Food",
+        "Adventure"
+    )
     var selectedButtonIndex by remember { mutableStateOf(0) }
 
     LazyRow(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
-    ) {
+    )
+    {
         itemsIndexed(buttonLabels) { index, text ->
             FilledTonalButton(
-                onClick = {},
+                onClick = { selectedButtonIndex = index },
                 modifier = Modifier
                     .height(55.dp)
-                    .padding(4.dp)
                     .selectable(
                         selected = index == selectedButtonIndex,
                         onClick = { selectedButtonIndex = index }
@@ -251,8 +275,25 @@ fun FilledTonalButtons(modifier: Modifier) {
     }
 }
 
-@Preview
 @Composable
-fun PreviewTonalButtonsList(){
-    FilledTonalButtons(Modifier)
+fun Popular(modifier: Modifier){
+    Text(
+        text = "Popular",
+        modifier = modifier,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.ExtraBold,
+        fontFamily = FontFamily(
+            Font(R.font.font_montserrat_regular)
+        )
+    )
+}
+
+@Composable
+fun SeeAll(modifier: Modifier){
+    Text(
+        text = "See all",
+        modifier = modifier,
+        color = colorResource(R.color.travel),
+        fontWeight = FontWeight.SemiBold
+    )
 }

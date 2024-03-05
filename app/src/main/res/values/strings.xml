@@ -9,4 +9,5 @@
 
     <string name="title_activity_main2">MainActivity2</string>
     <string name="aspen_usa">Aspen, USA</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
