@@ -29,20 +29,24 @@ import com.example.aspen_compose.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PopularLazyRow(modifier: Modifier) {
-    val imageList = listOf(
-        R.drawable.img_alley_palace,
-        R.drawable.img_coeurdes_alpes
-    )
-    val labelList = listOf(
-        "Alley Palace",
-        "Coeurdes Alpes"
+    val dataList = listOf<CardData>(
+        CardData(
+            R.drawable.img_alley_palace,
+            "Alley Palace",
+            "4.1"
+        ),
+        CardData(
+            R.drawable.img_coeurdes_alpes,
+            "Coeurdes Alpes",
+            "4.5"
+        )
     )
 
     LazyRow(
         modifier = modifier
     )
     {
-        itemsIndexed(imageList) { index, imageResource ->
+        itemsIndexed(dataList) { index, item ->
             Card(
                 onClick = { /*TODO*/ },
                 modifier = Modifier
@@ -59,7 +63,7 @@ fun PopularLazyRow(modifier: Modifier) {
                 )
                 {
                     Image(
-                        painter = painterResource(imageResource),
+                        painter = painterResource(item.imageId),
                         contentDescription = null,
                         modifier = Modifier,
                         contentScale = ContentScale.Crop,
@@ -77,7 +81,7 @@ fun PopularLazyRow(modifier: Modifier) {
                     )
                     {
                         Text(
-                            text = labelList[index],
+                            text = item.label,
                             modifier = Modifier
                                 .padding(
                                     vertical = 4.dp,
@@ -116,7 +120,7 @@ fun PopularLazyRow(modifier: Modifier) {
                                 tint = colorResource(R.color.yellow_star_light)
                             )
                             Text(
-                                text = "4.1",
+                                text = item.rating,
                                 color = Color.White,
                                 fontSize = 10.sp
                             )
