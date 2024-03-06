@@ -13,4 +13,6 @@
     <color name="gray_hard">#606060</color>
     <color name="gray_hard_label_surface">#4D5652</color>
     <color name="yellow_star_light">#F8D675</color>
+    <color name="green_dollars">#2DD7A4</color>
+    <color name="gray_favorite_bg">#F2F7FD</color>
 </resources>

@@ -11,4 +11,20 @@
     <string name="aspen_usa">Aspen, USA</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="description_detail">Aspen is as close as one can get to a storybook alpine town in America. The choose-your-own-adventure possibilities—skiing, hiking, dining shopping and ....</string>
+    <string name="_1_heater">1 Heater</string>
+    <string name="dinner">Dinner</string>
+    <string name="_1_tub">1 Tub</string>
+    <string name="pool">Pool</string>
+    <string name="price">Price</string>
+    <string name="book_now">Book Now</string>
+    <string name="_199">$199</string>
+    <string name="detailScreenActivity">DetailScreenActivity</string>
+    <string name="mainScreenActivity">MainScreenActivity</string>
+    <string name="welcomeActivity">WelcomeActivity</string>
+    <string name="find_things_to_do">Find things to do</string>
+    <string name="alley_palace">Alley Palace</string>
+    <string name="coeurdes_alpes">Coeurdes Alpes</string>
+    <string name="popular">Popular</string>
+    <string name="see_all">See all</string>
+    <string name="show_map">Show map</string>
 </resources>

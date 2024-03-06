@@ -19,8 +19,9 @@ class MainScreenActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
-                ) {
-                    MainScreen()
+                )
+                {
+
                 }
             }
         }

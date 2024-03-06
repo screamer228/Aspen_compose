@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -42,7 +45,7 @@ class DetailScreenActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    DetailCard(Modifier)
+
                 }
             }
         }
@@ -50,26 +53,57 @@ class DetailScreenActivity : ComponentActivity() {
 }
 
 @Composable
-fun DetailScreen(){
+fun DetailScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .padding(
+                20.dp
+            )
     )
     {
-        DetailCard(
+        Box(
             modifier = Modifier
-                .height(400.dp)
+                .height(380.dp)
                 .fillMaxWidth()
-                .padding(
-                    16.dp
-                )
         )
+        {
+            DetailCard(
+                modifier = Modifier
+                    .height(355.dp)
+                    .fillMaxWidth()
+            )
+            ArrowBack(
+                modifier = Modifier
+                    .height(50.dp)
+                    .width(50.dp)
+                    .padding(
+                        start = 12.dp,
+                        top = 12.dp
+                    )
+                    .background(
+                        colorResource(R.color.gray_light),
+                        shape = RoundedCornerShape(8.dp)
+                    )
+            )
+            Favorite(
+                modifier = Modifier
+                    .height(45.dp)
+                    .width(58.dp)
+                    .align(Alignment.BottomEnd)
+                    .padding(
+                        end = 12.dp
+                    )
+                    .background(
+                        colorResource(R.color.gray_favorite_bg),
+                        shape = RoundedCornerShape(30.dp)
+                    )
+                    .shadow(4.dp, shape = RoundedCornerShape(30.dp))
+            )
+        }
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    horizontal = 16.dp
-                ),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         )
         {
@@ -84,44 +118,81 @@ fun DetailScreen(){
                     )
             )
         }
+        RatingDetail(
+            modifier = Modifier
+                .padding(
+                    top = 8.dp
+                )
+        )
         Description(
             modifier = Modifier
                 .padding(
-                    start = 16.dp,
-                    top = 16.dp,
+                    top = 12.dp,
                     end = 45.dp
                 )
         )
         ReadMore(
             modifier = Modifier
                 .padding(
-                    start = 16.dp,
                     top = 8.dp
                 )
         )
         Facilities(
             modifier = Modifier
                 .padding(
-                    start = 16.dp,
-                    top = 30.dp
+                    top = 20.dp
                 )
         )
         FacilitiesImages(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    start = 16.dp,
-                    top = 16.dp,
-                    end = 16.dp
+                    top = 12.dp
                 )
         )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    top = 20.dp
+                ),
+            horizontalArrangement = Arrangement.SpaceBetween
+
+        )
+        {
+            Price(
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+            )
+            ButtonBookNow(
+                modifier = Modifier
+                    .height(55.dp)
+                    .width(240.dp)
+                    .shadow(5.dp, RoundedCornerShape(16.dp))
+            )
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewDetailScreen(){
+fun PreviewDetailScreen() {
     DetailScreen()
+}
+
+@Composable
+fun ArrowBack(modifier: Modifier) {
+    Box(
+        modifier = modifier
+    )
+    {
+        Image(
+            painter = painterResource(R.drawable.ic_arrow_back_light),
+            contentDescription = null,
+            modifier = Modifier
+                .align(Alignment.Center)
+        )
+    }
 }
 
 @Composable
@@ -147,10 +218,29 @@ fun DetailCard(modifier: Modifier) {
     }
 }
 
+
 @Composable
-fun CoeurdesAlpes(modifier: Modifier){
+fun Favorite(modifier: Modifier) {
+    Surface(
+        modifier = modifier
+    )
+    {
+        Image(
+            painter = painterResource(R.drawable.ic_heart),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(
+                    8.dp
+                )
+        )
+    }
+}
+
+@Composable
+fun CoeurdesAlpes(modifier: Modifier) {
     Text(
-        text = "Coeurdes Alpes",
+        text = stringResource(R.string.coeurdes_alpes),
         modifier = modifier,
         fontSize = 28.sp,
         fontWeight = FontWeight.SemiBold
@@ -158,9 +248,9 @@ fun CoeurdesAlpes(modifier: Modifier){
 }
 
 @Composable
-fun ShowMap(modifier: Modifier){
+fun ShowMap(modifier: Modifier) {
     Text(
-        text = "Show map",
+        text = stringResource(R.string.show_map),
         modifier = modifier,
         color = colorResource(R.color.travel),
         fontWeight = FontWeight.SemiBold
@@ -168,7 +258,37 @@ fun ShowMap(modifier: Modifier){
 }
 
 @Composable
-fun Description(modifier: Modifier){
+fun RatingDetail(modifier: Modifier) {
+    Row(
+        modifier = modifier
+    )
+    {
+        Image(
+            painter = painterResource(R.drawable.ic_star_dark),
+            contentDescription = null,
+            modifier = Modifier
+        )
+        Text(
+            text = "4.5",
+            modifier = Modifier
+                .padding(
+                    start = 4.dp,
+                    end = 4.dp
+                ),
+            color = colorResource(R.color.gray_hard),
+            fontSize = 13.sp
+        )
+        Text(
+            text = "(355 Reviews)",
+            modifier = Modifier,
+            color = colorResource(R.color.gray_hard),
+            fontSize = 13.sp
+        )
+    }
+}
+
+@Composable
+fun Description(modifier: Modifier) {
     Text(
         text = stringResource(R.string.description_detail),
         modifier = modifier
@@ -176,7 +296,7 @@ fun Description(modifier: Modifier){
 }
 
 @Composable
-fun ReadMore(modifier: Modifier){
+fun ReadMore(modifier: Modifier) {
     Row(
         modifier = modifier
     )
@@ -200,7 +320,7 @@ fun ReadMore(modifier: Modifier){
 }
 
 @Composable
-fun Facilities(modifier: Modifier){
+fun Facilities(modifier: Modifier) {
     Text(
         text = "Facilities",
         modifier = modifier,
@@ -210,67 +330,109 @@ fun Facilities(modifier: Modifier){
 }
 
 @Composable
-fun FacilitiesImages(modifier: Modifier){
+fun FacilitiesImages(modifier: Modifier) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.SpaceBetween
     )
     {
-        Box(
-            modifier = Modifier
-                .height(80.dp)
-                .width(80.dp)
-                .background(colorResource(R.color.gray_light))
+        Facility(
+            imageId = R.drawable.ic_heater,
+            text = stringResource(R.string._1_heater)
         )
-        {
-            Image(
-                painter = painterResource(R.drawable.ic_heater),
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.Center)
-            )
-        }
-        Box(
-            modifier = Modifier
-                .height(80.dp)
-                .width(80.dp)
-                .background(colorResource(R.color.gray_light))
+        Facility(
+            imageId = R.drawable.ic_dinner,
+            text = stringResource(R.string.dinner)
         )
-        {
-            Image(
-                painter = painterResource(R.drawable.ic_dinner),
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.Center)
-            )
-        }
-        Box(
-            modifier = Modifier
-                .height(80.dp)
-                .width(80.dp)
-                .background(colorResource(R.color.gray_light))
+        Facility(
+            imageId = R.drawable.ic_tub,
+            text = stringResource(R.string._1_tub)
         )
-        {
-            Image(
-                painter = painterResource(R.drawable.ic_tub),
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.Center)
-            )
-        }
-        Box(
-            modifier = Modifier
-                .height(80.dp)
-                .width(80.dp)
-                .background(colorResource(R.color.gray_light))
+        Facility(
+            imageId = R.drawable.ic_pool,
+            text = stringResource(R.string.pool)
         )
-        {
-            Image(
-                painter = painterResource(R.drawable.ic_pool),
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.Center)
+    }
+}
+
+@Composable
+fun Facility(imageId: Int, text: String) {
+    Box(
+        modifier = Modifier
+            .height(70.dp)
+            .width(75.dp)
+            .background(
+                colorResource(R.color.gray_light),
+                shape = RoundedCornerShape(16.dp)
             )
-        }
+    )
+    {
+        Image(
+            painter = painterResource(imageId),
+            contentDescription = null,
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .padding(
+                    top = 16.dp
+                )
+        )
+        Text(
+            text = text,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(
+                    bottom = 16.dp
+                ),
+            color = colorResource(R.color.gray),
+            fontSize = 11.sp
+        )
+    }
+}
+
+@Composable
+fun Price(modifier: Modifier) {
+    Column(
+        modifier = modifier
+    )
+    {
+        Text(
+            text = stringResource(R.string.price),
+            modifier = Modifier,
+            fontWeight = FontWeight.SemiBold
+        )
+        Text(
+            text = stringResource(R.string._199),
+            modifier = Modifier,
+            color = colorResource(R.color.green_dollars),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.ExtraBold
+        )
+    }
+}
+
+@Composable
+fun ButtonBookNow(modifier: Modifier) {
+    Button(
+        onClick = {
+
+        },
+        modifier = modifier,
+        enabled = true,
+        shape = RoundedCornerShape(16.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = colorResource(
+                id = R.color.travel
+            )
+        )
+    )
+    {
+        Text(
+            text = stringResource(R.string.book_now),
+            fontSize = 18.sp
+        )
+        Image(
+            painter = painterResource(R.drawable.ic_arrow_next),
+            contentDescription = null
+        )
     }
 }

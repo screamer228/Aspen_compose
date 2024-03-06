@@ -41,7 +41,7 @@ import com.example.aspen_compose.R
 import com.example.aspen_compose.ui.theme.Aspen_composeTheme
 
 @Composable
-fun MainScreen(){
+fun MainScreen(onNavigateToDetailScreen: () -> Unit){
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -51,27 +51,27 @@ fun MainScreen(){
     {
         ExploreAspen(
             modifier = Modifier
-            .align(Alignment.TopStart)
-            .padding(
-                start = 16.dp,
-                top = 32.dp
-            )
+                .align(Alignment.TopStart)
+                .padding(
+                    start = 16.dp,
+                    top = 32.dp
+                )
         )
         Location(
             modifier = Modifier
-            .align(Alignment.TopEnd)
-            .padding(
-                top = 32.dp,
-                end = 16.dp
-            )
+                .align(Alignment.TopEnd)
+                .padding(
+                    top = 32.dp,
+                    end = 16.dp
+                )
         )
         SearchBar(
             modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.TopCenter)
-            .padding(
-                top = 125.dp
-            )
+                .fillMaxWidth()
+                .align(Alignment.TopCenter)
+                .padding(
+                    top = 125.dp
+                )
         )
         RowTonalButtons(
             modifier = Modifier
@@ -85,35 +85,36 @@ fun MainScreen(){
         )
         Popular(
             modifier = Modifier
-            .align(Alignment.TopStart)
-            .padding(
-                start = 16.dp,
-                top = 280.dp
-            )
+                .align(Alignment.TopStart)
+                .padding(
+                    start = 16.dp,
+                    top = 280.dp
+                )
         )
         SeeAll(
             modifier = Modifier
-            .align(Alignment.TopEnd)
-            .padding(
-                top = 286.dp,
-                end = 16.dp
-            )
+                .align(Alignment.TopEnd)
+                .padding(
+                    top = 286.dp,
+                    end = 16.dp
+                )
         )
         PopularLazyRow(
             modifier = Modifier
-            .align(Alignment.TopCenter)
-            .padding(
-                top = 300.dp
-            )
+                .align(Alignment.TopCenter)
+                .padding(
+                    top = 300.dp
+                ),
+            onNavigateToDetailScreen
         )
     }
 }
 
-@Preview
-@Composable
-fun PreviewMainScreen(){
-    MainScreen()
-}
+//@Preview
+//@Composable
+//fun PreviewMainScreen(){
+//    MainScreen()
+//}
 
 @Composable
 fun ExploreAspen(modifier : Modifier) {
@@ -194,7 +195,7 @@ fun PreviewLocation() {
 
 @Composable
 fun SearchBar(modifier: Modifier) {
-    var textState by remember { mutableStateOf("Find things to do") }
+    var textState by remember { mutableStateOf("") }
 
     TextField(
         value = textState,
@@ -208,7 +209,11 @@ fun SearchBar(modifier: Modifier) {
                 painterResource(R.drawable.ic_search),
                 contentDescription = null
             ) },
-        placeholder = { "Find things to do" },
+        placeholder = {
+            Text(
+                stringResource(R.string.find_things_to_do),
+                color = colorResource(R.color.gray)
+            ) },
         colors = TextFieldDefaults.colors(
             focusedContainerColor = colorResource(R.color.gray_light),
             unfocusedContainerColor = colorResource(R.color.gray_light),
@@ -233,7 +238,9 @@ fun PreviewSearchBar(){
 fun RowTonalButtons(modifier: Modifier) {
     val buttonLabels = listOf(
         "Location",
-        "Hotels", "Food",
+        "Hotels",
+        "Food",
+        "Adventure",
         "Adventure"
     )
     var selectedButtonIndex by remember { mutableStateOf(0) }
@@ -282,7 +289,7 @@ fun RowTonalButtons(modifier: Modifier) {
 @Composable
 fun Popular(modifier: Modifier){
     Text(
-        text = "Popular",
+        text = stringResource(R.string.popular),
         modifier = modifier,
         fontSize = 20.sp,
         fontWeight = FontWeight.ExtraBold,
@@ -295,7 +302,7 @@ fun Popular(modifier: Modifier){
 @Composable
 fun SeeAll(modifier: Modifier){
     Text(
-        text = "See all",
+        text = stringResource(R.string.see_all),
         modifier = modifier,
         color = colorResource(R.color.travel),
         fontWeight = FontWeight.SemiBold

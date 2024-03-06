@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.aspen_compose.DetailScreen
 import com.example.aspen_compose.presentation.main_screen.MainScreen
 import com.example.aspen_compose.presentation.welcome_screen.WelcomeScreen
 
@@ -20,7 +21,10 @@ fun Navigation(
             WelcomeScreen(onNavigateToMainScreen = { navController.navigate("mainScreen") })
         }
         composable("mainScreen") {
-            MainScreen()
+            MainScreen(onNavigateToDetailScreen = { navController.navigate("detailScreen") })
+        }
+        composable("detailScreen") {
+            DetailScreen()
         }
     }
 }

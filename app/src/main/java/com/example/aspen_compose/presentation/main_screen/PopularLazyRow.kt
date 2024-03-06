@@ -12,7 +12,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,23 +21,23 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspen_compose.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PopularLazyRow(modifier: Modifier) {
+fun PopularLazyRow(modifier: Modifier, onNavigateToDetailScreen: () -> Unit) {
     val dataList = listOf(
         PopularCardData(
             R.drawable.img_alley_palace,
-            "Alley Palace",
+            stringResource(R.string.alley_palace),
             "4.1"
         ),
         PopularCardData(
             R.drawable.img_coeurdes_alpes,
-            "Coeurdes Alpes",
+            stringResource(R.string.coeurdes_alpes),
             "4.5"
         )
     )
@@ -49,7 +48,7 @@ fun PopularLazyRow(modifier: Modifier) {
     {
         itemsIndexed(dataList) { index, item ->
             Card(
-                onClick = { /*TODO*/ },
+                onClick = { onNavigateToDetailScreen() },
                 modifier = Modifier
                     .height(300.dp)
                     .width(250.dp)
@@ -133,8 +132,8 @@ fun PopularLazyRow(modifier: Modifier) {
     }
 }
 
-@Preview
-@Composable
-fun PreviewRowPopular(){
-    PopularLazyRow(Modifier)
-}
+//@Preview
+//@Composable
+//fun PreviewRowPopular(){
+//    PopularLazyRow(Modifier)
+//}
