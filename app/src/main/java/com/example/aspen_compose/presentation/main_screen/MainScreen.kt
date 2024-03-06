@@ -37,11 +37,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.aspen_compose.R
 import com.example.aspen_compose.ui.theme.Aspen_composeTheme
 
 @Composable
-fun MainScreen(onNavigateToDetailScreen: () -> Unit){
+fun MainScreen(navController: NavController){
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -105,7 +106,7 @@ fun MainScreen(onNavigateToDetailScreen: () -> Unit){
                 .padding(
                     top = 300.dp
                 ),
-            onNavigateToDetailScreen
+            navController
         )
     }
 }

@@ -25,7 +25,6 @@ class WelcomeActivity : ComponentActivity() {
                     val navController = rememberNavController()
 
                     Navigation(navController)
-
                 }
             }
         }

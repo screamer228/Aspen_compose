@@ -28,10 +28,11 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.aspen_compose.R
 
 @Composable
-fun WelcomeScreen(onNavigateToMainScreen: () -> Unit) {
+fun WelcomeScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -66,7 +67,7 @@ fun WelcomeScreen(onNavigateToMainScreen: () -> Unit) {
                 end = 30.dp,
                 bottom = 45.dp
             ),
-            onNavigateToMainScreen = onNavigateToMainScreen
+            navController
         )
     }
 }
@@ -144,10 +145,10 @@ fun PreviewPlanYourVacation(){
 }
 
 @Composable
-fun ButtonExplore(modifier: Modifier, onNavigateToMainScreen: () -> Unit){
+fun ButtonExplore(modifier: Modifier, navController: NavController){
     Button(
         onClick = {
-            onNavigateToMainScreen()
+                  navController.navigate("mainScreen")
         },
         modifier = modifier,
         enabled = true,

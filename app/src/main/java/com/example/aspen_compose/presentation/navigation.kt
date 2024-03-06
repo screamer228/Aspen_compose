@@ -18,10 +18,10 @@ fun Navigation(
     )
     {
         composable("welcome") {
-            WelcomeScreen(onNavigateToMainScreen = { navController.navigate("mainScreen") })
+            WelcomeScreen(navController)
         }
         composable("mainScreen") {
-            MainScreen(onNavigateToDetailScreen = { navController.navigate("detailScreen") })
+            MainScreen(navController)
         }
         composable("detailScreen") {
             DetailScreen()

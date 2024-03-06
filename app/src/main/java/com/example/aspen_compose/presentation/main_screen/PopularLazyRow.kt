@@ -24,11 +24,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.aspen_compose.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PopularLazyRow(modifier: Modifier, onNavigateToDetailScreen: () -> Unit) {
+fun PopularLazyRow(modifier: Modifier, navController: NavController) {
     val dataList = listOf(
         PopularCardData(
             R.drawable.img_alley_palace,
@@ -48,7 +49,9 @@ fun PopularLazyRow(modifier: Modifier, onNavigateToDetailScreen: () -> Unit) {
     {
         itemsIndexed(dataList) { index, item ->
             Card(
-                onClick = { onNavigateToDetailScreen() },
+                onClick = {
+                          navController.navigate("detailScreen")
+                },
                 modifier = Modifier
                     .height(300.dp)
                     .width(250.dp)
