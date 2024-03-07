@@ -27,4 +27,7 @@
     <string name="popular">Popular</string>
     <string name="see_all">See all</string>
     <string name="show_map">Show map</string>
+    <string name="facilities">Facilities</string>
+    <string name="explore_aspen">Explore Aspen</string>
+    <string name="luxurious_aspen">Luxurious Aspen</string>
 </resources>

@@ -322,7 +322,7 @@ fun ReadMore(modifier: Modifier) {
 @Composable
 fun Facilities(modifier: Modifier) {
     Text(
-        text = "Facilities",
+        text = stringResource(R.string.facilities),
         modifier = modifier,
         fontSize = 20.sp,
         fontWeight = FontWeight.SemiBold
@@ -428,6 +428,10 @@ fun ButtonBookNow(modifier: Modifier) {
     {
         Text(
             text = stringResource(R.string.book_now),
+            modifier = Modifier
+                .padding(
+                    end = 15.dp
+                ),
             fontSize = 18.sp
         )
         Image(

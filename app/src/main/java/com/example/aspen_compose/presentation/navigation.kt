@@ -21,7 +21,9 @@ fun Navigation(
             WelcomeScreen(navController)
         }
         composable("mainScreen") {
-            MainScreen(navController)
+            MainScreen(
+//                navController
+            )
         }
         composable("detailScreen") {
             DetailScreen()
