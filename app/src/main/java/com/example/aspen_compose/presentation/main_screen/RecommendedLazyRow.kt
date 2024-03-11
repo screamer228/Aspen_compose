@@ -1,9 +1,12 @@
 package com.example.aspen_compose.presentation.main_screen
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -11,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -22,27 +26,26 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.aspen_compose.R
+import com.example.aspen_compose.presentation.main_screen.PopularCardData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PopularLazyRow(modifier: Modifier,
-//                   navController: NavController
-) {
+fun RecommendedLazyRow(modifier: Modifier) {
     val dataList = listOf(
         PopularCardData(
-            R.drawable.img_alley_palace,
-            stringResource(R.string.alley_palace),
-            stringResource(R.string._4_1)
+            R.drawable.img_explore_aspen,
+            stringResource(R.string.explore_aspen),
+            stringResource(R.string._4n_5d)
         ),
         PopularCardData(
-            R.drawable.img_coeurdes_alpes,
-            stringResource(R.string.coeurdes_alpes),
-            stringResource(R.string._4_5)
+            R.drawable.img_luxurious_aspen,
+            stringResource(R.string.luxurious_aspen),
+            stringResource(R.string._2n_3d)
         )
     )
 
@@ -56,82 +59,77 @@ fun PopularLazyRow(modifier: Modifier,
 //                          navController.navigate("detailScreen")
                 },
                 modifier = Modifier
-                    .height(260.dp)
-                    .width(220.dp)
+                    .height(125.dp)
+                    .width(200.dp)
                     .padding(
-
                         end = 20.dp
                     ),
-                shape = RoundedCornerShape(24.dp)
+                shape = RoundedCornerShape(12.dp),
+                elevation = CardDefaults.cardElevation(8.dp)
             )
             {
                 Box(
                     modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.White)
+                        .border(
+                            BorderStroke(1.dp, Color.White),
+                            shape = RoundedCornerShape(20.dp)
+                        )
                 )
                 {
                     Image(
                         painter = painterResource(item.imageId),
                         contentDescription = null,
                         modifier = Modifier
-                            .fillMaxSize(),
+                            .height(100.dp)
+                            .fillMaxWidth()
+                            .border(
+                                BorderStroke(1.dp, Color.White),
+                                shape = RoundedCornerShape(20.dp)
+                            )
+                            .background(
+                                Color.White,
+                                shape = RoundedCornerShape(20.dp)
+                            ),
                         contentScale = ContentScale.Crop,
                         alignment = Alignment.TopCenter
                     )
-                    Surface(
+                    Text(
+                        text = item.label,
                         modifier = Modifier
                             .align(Alignment.BottomStart)
                             .padding(
-                                start = 12.dp,
-                                bottom = 42.dp
+                                start = 4.dp,
+                                bottom = 4.dp
+                            ),
+                        fontWeight = FontWeight.Bold
+                    )
+                    Surface(
+                        modifier = Modifier
+                            .align(Alignment.BottomEnd)
+                            .padding(
+                                end = 6.dp,
+                                bottom = 16.dp
                             ),
                         color = colorResource(R.color.gray_hard_label_surface),
-                        shape = RoundedCornerShape(20.dp)
+                        shape = RoundedCornerShape(20.dp),
+                        border = BorderStroke(1.dp, Color.White)
                     )
                     {
                         Text(
-                            text = item.label,
+                            text = item.rating,
                             modifier = Modifier
+                                .align(Alignment.Center)
                                 .padding(
-                                    vertical = 4.dp,
-                                    horizontal = 12.dp
+                                    horizontal = 6.dp,
+                                    vertical = 2.dp
+
                                 ),
-                            color = Color.White
+                            color = Color.White,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Medium
                         )
-                    }
-                    Surface(
-                        modifier = Modifier
-                            .align(Alignment.BottomStart)
-                            .padding(
-                                start = 12.dp,
-                                bottom = 12.dp
-                            ),
-                        color = colorResource(R.color.gray_hard_label_surface),
-                        shape = RoundedCornerShape(20.dp)
-                    )
-                    {
-                        Row(
-                            modifier = Modifier
-                                .padding(
-                                    vertical = 4.dp,
-                                    horizontal = 12.dp
-                                )
-                        )
-                        {
-                            Image(
-                                painter = painterResource(R.drawable.ic_star_light),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .align(Alignment.CenterVertically)
-                                    .padding(
-                                        end = 6.dp
-                                    )
-                            )
-                            Text(
-                                text = item.rating,
-                                color = Color.White,
-                                fontSize = 10.sp
-                            )
-                        }
                     }
                 }
             }
@@ -141,6 +139,6 @@ fun PopularLazyRow(modifier: Modifier,
 
 @Preview
 @Composable
-fun PreviewRowPopular(){
-    PopularLazyRow(Modifier)
+fun PreviewRecommendedLazyRow(){
+    RecommendedLazyRow(Modifier)
 }

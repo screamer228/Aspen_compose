@@ -1,13 +1,7 @@
 package com.example.aspen_compose.presentation.main_screen
 
-import SearchBar
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clipScrollableContainer
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -19,29 +13,17 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.ShapeDefaults
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -52,15 +34,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.aspen_compose.R
-import com.example.aspen_compose.ui.theme.Aspen_composeTheme
 import com.example.aspen_compose.utils.fillWidthOfParent
 
 @Composable
 fun MainScreen(
 //    navController: NavController
-){
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -123,6 +103,7 @@ fun MainScreen(
                 .padding(
                     top = 16.dp
                 )
+                //Custom Compose Util
                 .fillWidthOfParent(20.dp),
 //            navController
         )
@@ -137,18 +118,19 @@ fun MainScreen(
                 .padding(
                     top = 12.dp
                 )
+                .fillWidthOfParent(20.dp)
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewMainScreen(){
+fun PreviewMainScreen() {
     MainScreen()
 }
 
 @Composable
-fun ExploreAspen(modifier : Modifier) {
+fun ExploreAspen(modifier: Modifier) {
     val textStyle = TextStyle(
         color = Color.Black,
         fontWeight = FontWeight.Bold,
@@ -177,7 +159,7 @@ fun ExploreAspen(modifier : Modifier) {
 }
 
 @Composable
-fun Location(modifier: Modifier){
+fun Location(modifier: Modifier) {
     val textStyle = TextStyle(
         color = colorResource(R.color.gray_hard),
         fontSize = 13.sp
@@ -213,13 +195,13 @@ fun Location(modifier: Modifier){
 @Composable
 fun RowTonalButtons(modifier: Modifier) {
     val buttonLabels = listOf(
-        "Location",
-        "Hotels",
-        "Food",
-        "Adventure",
-        "Adventure"
+        stringResource(R.string.location),
+        stringResource(R.string.hotels),
+        stringResource(R.string.food),
+        stringResource(R.string.adventure),
+        stringResource(R.string.adventure)
     )
-    var selectedButtonIndex by remember { mutableStateOf(0) }
+    var selectedButtonIndex by remember { mutableIntStateOf(0) }
 
     LazyRow(
         modifier = modifier,
@@ -267,7 +249,7 @@ fun RowTonalButtons(modifier: Modifier) {
 }
 
 @Composable
-fun Popular(modifier: Modifier){
+fun Popular(modifier: Modifier) {
     Text(
         text = stringResource(R.string.popular),
         modifier = modifier,
@@ -280,7 +262,7 @@ fun Popular(modifier: Modifier){
 }
 
 @Composable
-fun SeeAll(modifier: Modifier){
+fun SeeAll(modifier: Modifier) {
     Text(
         text = stringResource(R.string.see_all),
         modifier = modifier,
@@ -290,7 +272,7 @@ fun SeeAll(modifier: Modifier){
 }
 
 @Composable
-fun Recommended(modifier: Modifier){
+fun Recommended(modifier: Modifier) {
     Text(
         text = "Recommended",
         modifier = modifier,
@@ -302,100 +284,3 @@ fun Recommended(modifier: Modifier){
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun RecommendedLazyRow(modifier: Modifier){
-    val dataList = listOf(
-        PopularCardData(
-            R.drawable.img_explore_aspen,
-            stringResource(R.string.explore_aspen),
-            "4N/5D"
-        ),
-        PopularCardData(
-            R.drawable.img_luxurious_aspen,
-            stringResource(R.string.luxurious_aspen),
-            "2N/3D"
-        )
-    )
-
-    LazyRow(
-        modifier = modifier
-    )
-    {
-        itemsIndexed(dataList) { index, item ->
-            Card(
-                onClick = {
-//                          navController.navigate("detailScreen")
-                },
-                modifier = Modifier
-                    .height(125.dp)
-                    .width(200.dp)
-                    .padding(
-                        end = 20.dp
-                    ),
-                shape = RoundedCornerShape(12.dp),
-                elevation = CardDefaults.cardElevation(8.dp)
-            )
-            {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.White)
-                        .border(
-                            BorderStroke(1.dp, Color.White),
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                )
-                {
-                    Image(
-                        painter = painterResource(item.imageId),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .height(100.dp)
-                            .fillMaxWidth()
-                            .border(
-                                BorderStroke(1.dp, Color.White),
-                                shape = RoundedCornerShape(20.dp)
-                            )
-                            .background(
-                                Color.White,
-                                shape = RoundedCornerShape(20.dp)
-                            ),
-                        contentScale = ContentScale.Crop,
-                        alignment = Alignment.TopCenter
-                    )
-                    Text(
-                        text = item.label,
-                        modifier = Modifier
-                            .align(Alignment.BottomStart)
-                            .padding(
-                                start = 4.dp,
-                                bottom = 4.dp
-                            ),
-                        fontWeight = FontWeight.Bold
-                    )
-                    Surface(
-                        modifier = Modifier
-                            .align(Alignment.BottomEnd)
-                            .padding(
-                                end = 6.dp,
-                                bottom = 18.dp
-                            ),
-                        color = colorResource(R.color.gray_hard_label_surface),
-                        shape = RoundedCornerShape(20.dp)
-                    )
-                    {
-                        Text(
-                            text = item.rating,
-                            modifier = Modifier
-                                .align(Alignment.Center)
-                                .padding(4.dp),
-                            color = Color.White,
-                            fontSize = 10.sp
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
