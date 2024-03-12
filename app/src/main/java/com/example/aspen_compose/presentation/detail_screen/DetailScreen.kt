@@ -19,6 +19,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -31,11 +33,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.aspen_compose.R
+import com.example.aspen_compose.presentation.detail_screen.viewmodel.DetailViewModel
 
 @Composable
-fun DetailScreen(navController: NavController) {
+fun DetailScreen(
+    viewModel: DetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
+    navController: NavController,
+    index: Int
+) {
+
+    val uiState by viewModel.uiState.observeAsState(
+        viewModel.getInitialState()
+    )
+
+    viewModel.getStateByIndex(index)
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -53,7 +66,8 @@ fun DetailScreen(navController: NavController) {
             DetailCard(
                 modifier = Modifier
                     .height(355.dp)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                uiState.popularCardData.imageId
             )
             ArrowBack(
                 modifier = Modifier
@@ -93,7 +107,8 @@ fun DetailScreen(navController: NavController) {
         )
         {
             CoeurdesAlpes(
-                modifier = Modifier
+                modifier = Modifier,
+                uiState.popularCardData.label
             )
             ShowMap(
                 modifier = Modifier
@@ -107,7 +122,8 @@ fun DetailScreen(navController: NavController) {
             modifier = Modifier
                 .padding(
                     top = 8.dp
-                )
+                ),
+            uiState.popularCardData.rating
         )
         Description(
             modifier = Modifier
@@ -162,7 +178,7 @@ fun DetailScreen(navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewDetailScreen() {
-    DetailScreen(rememberNavController())
+//    DetailScreen(rememberNavController())
 }
 
 @Composable
@@ -181,7 +197,7 @@ fun ArrowBack(modifier: Modifier) {
 }
 
 @Composable
-fun DetailCard(modifier: Modifier) {
+fun DetailCard(modifier: Modifier, imageId: Int) {
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(24.dp)
@@ -192,7 +208,7 @@ fun DetailCard(modifier: Modifier) {
         )
         {
             Image(
-                painter = painterResource(R.drawable.img_coeurdes_alpes),
+                painter = painterResource(imageId),
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxSize(),
@@ -222,9 +238,9 @@ fun Favorite(modifier: Modifier) {
 }
 
 @Composable
-fun CoeurdesAlpes(modifier: Modifier) {
+fun CoeurdesAlpes(modifier: Modifier, label: String) {
     Text(
-        text = stringResource(R.string.coeurdes_alpes),
+        text = label,
         modifier = modifier,
         fontSize = 28.sp,
         fontWeight = FontWeight.SemiBold
@@ -242,7 +258,7 @@ fun ShowMap(modifier: Modifier) {
 }
 
 @Composable
-fun RatingDetail(modifier: Modifier) {
+fun RatingDetail(modifier: Modifier, rating: String) {
     Row(
         modifier = modifier
     )
@@ -253,7 +269,7 @@ fun RatingDetail(modifier: Modifier) {
             modifier = Modifier
         )
         Text(
-            text = "4.5",
+            text = rating,
             modifier = Modifier
                 .padding(
                     start = 4.dp,

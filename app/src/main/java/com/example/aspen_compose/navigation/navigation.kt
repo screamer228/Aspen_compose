@@ -25,8 +25,13 @@ fun Navigation(
                 navController = navController
             )
         }
-        composable("detailScreen") {
-            DetailScreen(navController)
+        composable("detailScreen/{index}") { navBackStackEntry ->
+            /* Extracting the id from the route */
+            val index = navBackStackEntry.arguments?.getString("index")
+            /* We check if is null */
+            index?.let {
+                DetailScreen(navController = navController, index = it.toInt())
+            }
         }
     }
 }

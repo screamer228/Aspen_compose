@@ -44,7 +44,9 @@ fun PopularLazyRow(
         itemsIndexed(popularCardData) { index, item ->
             Card(
                 onClick = {
-                    navController.navigate("detailScreen")
+                    navController.navigate(
+                        "detailScreen/$index"
+                    )
                 },
                 modifier = Modifier
                     .height(260.dp)

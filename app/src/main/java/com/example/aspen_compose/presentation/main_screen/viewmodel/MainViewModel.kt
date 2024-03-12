@@ -8,11 +8,11 @@ import com.example.aspen_compose.presentation.main_screen.uistate.MainUiState
 
 class MainViewModel : ViewModel() {
 
-    private val _uiState: MutableLiveData<MainUiState> = MutableLiveData(getData())
+    private val _uiState: MutableLiveData<MainUiState> = MutableLiveData()
     val uiState: LiveData<MainUiState> = _uiState
 
     fun getStateData() {
-        _uiState.value = getData()
+        _uiState.postValue(getData())
     }
 
     fun getInitialState(): MainUiState {

@@ -39,11 +39,11 @@ fun MainScreen(
     navController: NavController
 ) {
 
-//    viewModel.getStateData()
-
     val uiState by viewModel.uiState.observeAsState(
         viewModel.getInitialState()
     )
+
+    viewModel.getStateData()
 
     Column(
         modifier = Modifier
