@@ -15,12 +15,14 @@ object DataMock {
                         PopularCardData(
                             R.drawable.img_alley_palace,
                             "Alley Palace",
-                            "4.1"
+                            "4.1",
+                            true
                         ),
                         PopularCardData(
                             R.drawable.img_coeurdes_alpes,
                             "Coeurdes Alpes",
-                            "4.5"
+                            "4.5",
+                            false
                         )
                     ),
                     mutableListOf(

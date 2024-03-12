@@ -5,5 +5,6 @@ import androidx.annotation.DrawableRes
 data class PopularCardData(
     @DrawableRes val imageId: Int,
     val label: String,
-    val rating: String
+    val rating: String,
+    val isFavorite: Boolean
 )

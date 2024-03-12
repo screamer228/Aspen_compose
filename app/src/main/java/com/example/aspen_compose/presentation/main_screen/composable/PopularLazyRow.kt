@@ -1,6 +1,7 @@
 package com.example.aspen_compose.presentation.main_screen.composable
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -126,6 +127,30 @@ fun PopularLazyRow(
                             )
                         }
                     }
+//                    Surface(
+//                        modifier = Modifier
+//                            .height(45.dp)
+//                            .width(58.dp)
+//                            .align(Alignment.BottomEnd)
+//                            .padding(
+//                                end = 12.dp
+//                            )
+//                            .background(
+//                                colorResource(R.color.gray_favorite_bg),
+//                                shape = RoundedCornerShape(30.dp)
+//                            )
+//                    )
+//                    {
+//                        Image(
+//                            painter = painterResource(R.drawable.ic_heart),
+//                            contentDescription = null,
+//                            modifier = Modifier
+//                                .fillMaxSize()
+//                                .padding(
+//                                    8.dp
+//                                )
+//                        )
+//                    }
                 }
             }
         }
