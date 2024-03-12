@@ -17,3 +17,22 @@ fun Modifier.fillWidthOfParent(parentPadding: Dp) = this.then(
         }
     },
 )
+
+data class Paddings(
+    val paddingStart: Int,
+    val paddingEnd: Int
+)
+
+fun buttonPaddings(index: Int, itemCount: Int): Paddings {
+    val paddingStart = itemLazyRowPadding(index)
+
+    val paddingEnd = if (index == (itemCount - 1)) 20
+    else 0
+
+    return Paddings(paddingStart, paddingEnd)
+}
+
+fun itemLazyRowPadding(index: Int): Int {
+    return if (index == 0) 20
+    else 0
+}

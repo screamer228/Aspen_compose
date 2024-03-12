@@ -1,10 +1,10 @@
-package com.example.aspen_compose.presentation
+package com.example.aspen_compose.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.aspen_compose.DetailScreen
+import com.example.aspen_compose.presentation.detail_screen.DetailScreen
 import com.example.aspen_compose.presentation.main_screen.MainScreen
 import com.example.aspen_compose.presentation.welcome_screen.WelcomeScreen
 
@@ -22,11 +22,11 @@ fun Navigation(
         }
         composable("mainScreen") {
             MainScreen(
-//                navController
+                navController = navController
             )
         }
         composable("detailScreen") {
-            DetailScreen()
+            DetailScreen(navController)
         }
     }
 }

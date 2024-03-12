@@ -1,4 +1,4 @@
-package com.example.aspen_compose.presentation.main_screen
+package com.example.aspen_compose.presentation.main_screen.composable
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -25,43 +25,35 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspen_compose.R
-import com.example.aspen_compose.presentation.main_screen.PopularCardData
+import com.example.aspen_compose.presentation.model.RecommendedCardData
+import com.example.aspen_compose.utils.itemLazyRowPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RecommendedLazyRow(modifier: Modifier) {
-    val dataList = listOf(
-        PopularCardData(
-            R.drawable.img_explore_aspen,
-            stringResource(R.string.explore_aspen),
-            stringResource(R.string._4n_5d)
-        ),
-        PopularCardData(
-            R.drawable.img_luxurious_aspen,
-            stringResource(R.string.luxurious_aspen),
-            stringResource(R.string._2n_3d)
-        )
-    )
+fun RecommendedLazyRow(
+    modifier: Modifier,
+    recommendedCardData: MutableList<RecommendedCardData>
+) {
 
     LazyRow(
         modifier = modifier
     )
     {
-        itemsIndexed(dataList) { index, item ->
+        itemsIndexed(recommendedCardData) { index, item ->
             Card(
                 onClick = {
 //                          navController.navigate("detailScreen")
                 },
                 modifier = Modifier
                     .height(125.dp)
-                    .width(200.dp)
+                    .width(220.dp)
                     .padding(
+                        start = itemLazyRowPadding(index).dp,
                         end = 20.dp
                     ),
                 shape = RoundedCornerShape(12.dp),
@@ -93,7 +85,7 @@ fun RecommendedLazyRow(modifier: Modifier) {
                                 shape = RoundedCornerShape(20.dp)
                             ),
                         contentScale = ContentScale.Crop,
-                        alignment = Alignment.TopCenter
+                        alignment = Alignment.BottomCenter
                     )
                     Text(
                         text = item.label,
@@ -118,7 +110,7 @@ fun RecommendedLazyRow(modifier: Modifier) {
                     )
                     {
                         Text(
-                            text = item.rating,
+                            text = item.duration,
                             modifier = Modifier
                                 .align(Alignment.Center)
                                 .padding(
@@ -139,6 +131,6 @@ fun RecommendedLazyRow(modifier: Modifier) {
 
 @Preview
 @Composable
-fun PreviewRecommendedLazyRow(){
-    RecommendedLazyRow(Modifier)
+fun PreviewRecommendedLazyRow() {
+//    RecommendedLazyRow(Modifier)
 }

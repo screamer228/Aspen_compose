@@ -2,6 +2,7 @@ package com.example.aspen_compose.presentation.detail_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,10 +30,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.aspen_compose.R
 
 @Composable
-fun DetailScreen() {
+fun DetailScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -54,6 +57,9 @@ fun DetailScreen() {
             )
             ArrowBack(
                 modifier = Modifier
+                    .clickable {
+                        navController.navigateUp()
+                    }
                     .height(50.dp)
                     .width(50.dp)
                     .padding(
@@ -156,7 +162,7 @@ fun DetailScreen() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewDetailScreen() {
-    DetailScreen()
+    DetailScreen(rememberNavController())
 }
 
 @Composable
@@ -196,7 +202,6 @@ fun DetailCard(modifier: Modifier) {
         }
     }
 }
-
 
 @Composable
 fun Favorite(modifier: Modifier) {

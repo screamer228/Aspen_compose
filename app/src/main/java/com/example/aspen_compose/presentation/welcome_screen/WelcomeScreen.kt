@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.aspen_compose.R
 
 @Composable
@@ -45,38 +46,41 @@ fun WelcomeScreen(navController: NavController) {
             contentScale = ContentScale.Crop,
             alignment = Alignment.CenterEnd
         )
-        AspenGreeting(modifier = Modifier
-            .align(Alignment.TopCenter)
-            .padding(
-                top = 85.dp
-            )
+        AspenGreeting(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .padding(
+                    top = 85.dp
+                )
         )
-        PlanYourVacation(modifier = Modifier
-            .align(Alignment.BottomStart)
-            .padding(
-                start = 30.dp,
-                bottom = 125.dp
-            )
+        PlanYourVacation(
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .padding(
+                    start = 30.dp,
+                    bottom = 125.dp
+                )
         )
-        ButtonExplore(modifier = Modifier
-            .height(105.dp)
-            .fillMaxWidth()
-            .align(Alignment.BottomCenter)
-            .padding(
-                start = 30.dp,
-                end = 30.dp,
-                bottom = 45.dp
-            ),
+        ButtonExplore(
+            modifier = Modifier
+                .height(105.dp)
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(
+                    start = 30.dp,
+                    end = 30.dp,
+                    bottom = 45.dp
+                ),
             navController
         )
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewMyScreen(){
-//    MyScreen(onNavigateToMainScreen)
-//}
+@Preview(showBackground = true)
+@Composable
+fun PreviewMyScreen() {
+    WelcomeScreen(navController = rememberNavController())
+}
 
 @Composable
 fun AspenGreeting(modifier: Modifier) {
@@ -98,15 +102,8 @@ fun AspenGreeting(modifier: Modifier) {
     )
 }
 
-@Preview(showBackground = false)
 @Composable
-fun PreviewAspenGreeting() {
-    AspenGreeting(Modifier)
-}
-
-@Composable
-fun PlanYourVacation(modifier: Modifier)
-{
+fun PlanYourVacation(modifier: Modifier) {
     val textStyle = TextStyle(
         fontWeight = FontWeight.Bold,
         fontFamily = FontFamily(
@@ -121,7 +118,8 @@ fun PlanYourVacation(modifier: Modifier)
             text = stringResource(R.string.plan_your),
             style = textStyle.copy(
                 fontSize = 24.sp,
-                fontWeight = FontWeight.ExtraLight),
+                fontWeight = FontWeight.ExtraLight
+            ),
         )
         Text(
             text = stringResource(R.string.luxurious),
@@ -138,17 +136,11 @@ fun PlanYourVacation(modifier: Modifier)
     }
 }
 
-@Preview
 @Composable
-fun PreviewPlanYourVacation(){
-    PlanYourVacation(Modifier)
-}
-
-@Composable
-fun ButtonExplore(modifier: Modifier, navController: NavController){
+fun ButtonExplore(modifier: Modifier, navController: NavController) {
     Button(
         onClick = {
-                  navController.navigate("mainScreen")
+            navController.navigate("mainScreen")
         },
         modifier = modifier,
         enabled = true,

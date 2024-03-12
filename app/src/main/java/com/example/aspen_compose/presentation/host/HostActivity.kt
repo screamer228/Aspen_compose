@@ -1,4 +1,4 @@
-package com.example.aspen_compose
+package com.example.aspen_compose.presentation.host
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,12 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.rememberNavController
-import com.example.aspen_compose.presentation.Navigation
-import com.example.aspen_compose.presentation.main_screen.MainScreen
 import com.example.aspen_compose.ui.theme.Aspen_composeTheme
+import androidx.navigation.compose.rememberNavController
+import com.example.aspen_compose.navigation.Navigation
 
-class MainScreenActivity : ComponentActivity() {
+class HostActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -23,9 +22,12 @@ class MainScreenActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 )
                 {
+                    val navController = rememberNavController()
 
+                    Navigation(navController)
                 }
             }
         }
     }
 }
+

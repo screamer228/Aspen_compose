@@ -1,4 +1,4 @@
-package com.example.aspen_compose.presentation.main_screen
+package com.example.aspen_compose.presentation.model
 
 import androidx.annotation.DrawableRes
 

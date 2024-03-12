@@ -1,4 +1,4 @@
-package com.example.aspen_compose.presentation.main_screen
+package com.example.aspen_compose.presentation.main_screen.composable
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

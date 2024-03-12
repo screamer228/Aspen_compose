@@ -3,24 +3,14 @@ package com.example.aspen_compose.presentation.main_screen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,13 +24,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.aspen_compose.R
+import com.example.aspen_compose.presentation.main_screen.composable.ButtonsLazyRow
+import com.example.aspen_compose.presentation.main_screen.composable.PopularLazyRow
+import com.example.aspen_compose.presentation.main_screen.composable.RecommendedLazyRow
+import com.example.aspen_compose.presentation.main_screen.composable.SearchBar
+import com.example.aspen_compose.presentation.main_screen.viewmodel.MainViewModel
 import com.example.aspen_compose.utils.fillWidthOfParent
 
 @Composable
 fun MainScreen(
-//    navController: NavController
+    viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
+    navController: NavController
 ) {
+
+//    viewModel.getStateData()
+
+    val uiState by viewModel.uiState.observeAsState(
+        viewModel.getInitialState()
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -73,13 +77,14 @@ fun MainScreen(
                     top = 24.dp
                 )
         )
-        RowTonalButtons(
+        ButtonsLazyRow(
             modifier = Modifier
                 .fillMaxWidth()
+                //Custom Compose Util
+                .fillWidthOfParent(20.dp)
                 .padding(
                     top = 32.dp
                 )
-
         )
         Row(
             modifier = Modifier
@@ -101,11 +106,12 @@ fun MainScreen(
         PopularLazyRow(
             modifier = Modifier
                 .padding(
-                    top = 16.dp
+                    top = 8.dp
                 )
                 //Custom Compose Util
                 .fillWidthOfParent(20.dp),
-//            navController
+            uiState.popularCardData,
+            navController
         )
         Recommended(
             modifier = Modifier
@@ -116,9 +122,11 @@ fun MainScreen(
         RecommendedLazyRow(
             modifier = Modifier
                 .padding(
-                    top = 12.dp
+                    top = 8.dp
                 )
-                .fillWidthOfParent(20.dp)
+                //Custom Compose Util
+                .fillWidthOfParent(20.dp),
+            uiState.recommendedCardData
         )
     }
 }
@@ -126,7 +134,7 @@ fun MainScreen(
 @Preview(showBackground = true)
 @Composable
 fun PreviewMainScreen() {
-    MainScreen()
+//    MainScreen(rememberNavController())
 }
 
 @Composable
@@ -189,62 +197,6 @@ fun Location(modifier: Modifier) {
                 .align(Alignment.CenterVertically),
             contentDescription = null
         )
-    }
-}
-
-@Composable
-fun RowTonalButtons(modifier: Modifier) {
-    val buttonLabels = listOf(
-        stringResource(R.string.location),
-        stringResource(R.string.hotels),
-        stringResource(R.string.food),
-        stringResource(R.string.adventure),
-        stringResource(R.string.adventure)
-    )
-    var selectedButtonIndex by remember { mutableIntStateOf(0) }
-
-    LazyRow(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
-    )
-    {
-        itemsIndexed(buttonLabels) { index, text ->
-            FilledTonalButton(
-                onClick = { selectedButtonIndex = index },
-                modifier = Modifier
-                    .height(40.dp)
-                    .width(85.dp)
-                    .selectable(
-                        selected = index == selectedButtonIndex,
-                        onClick = { selectedButtonIndex = index }
-                    ),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor =
-                    if (index == selectedButtonIndex)
-                        colorResource(R.color.gray_light)
-                    else
-                        Color.White,
-                    contentColor = Color.White
-                ),
-                contentPadding = PaddingValues(0.dp)
-            )
-            {
-                Text(
-                    text = text,
-                    modifier = Modifier,
-                    fontSize = 14.sp,
-                    color =
-                    if (index == selectedButtonIndex)
-                        colorResource(R.color.travel)
-                    else
-                        colorResource(R.color.gray),
-                    fontWeight = if (index == selectedButtonIndex)
-                        FontWeight.Bold
-                    else
-                        FontWeight.Normal
-                )
-            }
-        }
     }
 }
 

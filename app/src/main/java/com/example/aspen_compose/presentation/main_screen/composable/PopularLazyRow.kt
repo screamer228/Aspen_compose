@@ -1,4 +1,4 @@
-package com.example.aspen_compose.presentation.main_screen
+package com.example.aspen_compose.presentation.main_screen.composable
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -21,45 +21,36 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.aspen_compose.R
+import com.example.aspen_compose.presentation.model.PopularCardData
+import com.example.aspen_compose.utils.itemLazyRowPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PopularLazyRow(modifier: Modifier,
-//                   navController: NavController
+fun PopularLazyRow(
+    modifier: Modifier,
+    popularCardData: MutableList<PopularCardData>,
+    navController: NavController
 ) {
-    val dataList = listOf(
-        PopularCardData(
-            R.drawable.img_alley_palace,
-            stringResource(R.string.alley_palace),
-            stringResource(R.string._4_1)
-        ),
-        PopularCardData(
-            R.drawable.img_coeurdes_alpes,
-            stringResource(R.string.coeurdes_alpes),
-            stringResource(R.string._4_5)
-        )
-    )
 
     LazyRow(
         modifier = modifier
     )
     {
-        itemsIndexed(dataList) { index, item ->
+        itemsIndexed(popularCardData) { index, item ->
             Card(
                 onClick = {
-//                          navController.navigate("detailScreen")
+                    navController.navigate("detailScreen")
                 },
                 modifier = Modifier
                     .height(260.dp)
-                    .width(220.dp)
+                    .width(240.dp)
                     .padding(
-
+                        start = itemLazyRowPadding(index).dp,
                         end = 20.dp
                     ),
                 shape = RoundedCornerShape(24.dp)
@@ -141,6 +132,6 @@ fun PopularLazyRow(modifier: Modifier,
 
 @Preview
 @Composable
-fun PreviewRowPopular(){
-    PopularLazyRow(Modifier)
+fun PreviewRowPopular() {
+//    PopularLazyRow(Modifier, rememberNavController())
 }
