@@ -106,7 +106,7 @@ fun MainScreen(
         PopularLazyRow(
             modifier = Modifier
                 .padding(
-                    top = 8.dp
+                    top = 6.dp
                 )
                 //Custom Compose Util
                 .fillWidthOfParent(20.dp),
@@ -122,7 +122,7 @@ fun MainScreen(
         RecommendedLazyRow(
             modifier = Modifier
                 .padding(
-                    top = 8.dp
+                    top = 6.dp
                 )
                 //Custom Compose Util
                 .fillWidthOfParent(20.dp),

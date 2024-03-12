@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -18,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -75,8 +77,8 @@ fun PopularLazyRow(
                         modifier = Modifier
                             .align(Alignment.BottomStart)
                             .padding(
-                                start = 12.dp,
-                                bottom = 42.dp
+                                start = 14.dp,
+                                bottom = 46.dp
                             ),
                         color = colorResource(R.color.gray_hard_label_surface),
                         shape = RoundedCornerShape(20.dp)
@@ -85,6 +87,7 @@ fun PopularLazyRow(
                         Text(
                             text = item.label,
                             modifier = Modifier
+                                .align(Alignment.Center)
                                 .padding(
                                     vertical = 4.dp,
                                     horizontal = 12.dp
@@ -96,8 +99,8 @@ fun PopularLazyRow(
                         modifier = Modifier
                             .align(Alignment.BottomStart)
                             .padding(
-                                start = 12.dp,
-                                bottom = 12.dp
+                                start = 14.dp,
+                                bottom = 14.dp
                             ),
                         color = colorResource(R.color.gray_hard_label_surface),
                         shape = RoundedCornerShape(20.dp)
@@ -106,7 +109,7 @@ fun PopularLazyRow(
                         Row(
                             modifier = Modifier
                                 .padding(
-                                    vertical = 4.dp,
+                                    vertical = 5.dp,
                                     horizontal = 12.dp
                                 )
                         )
@@ -123,34 +126,41 @@ fun PopularLazyRow(
                             Text(
                                 text = item.rating,
                                 color = Color.White,
-                                fontSize = 10.sp
+                                fontSize = 11.sp
                             )
                         }
                     }
-//                    Surface(
-//                        modifier = Modifier
-//                            .height(45.dp)
-//                            .width(58.dp)
-//                            .align(Alignment.BottomEnd)
-//                            .padding(
-//                                end = 12.dp
-//                            )
-//                            .background(
-//                                colorResource(R.color.gray_favorite_bg),
-//                                shape = RoundedCornerShape(30.dp)
-//                            )
-//                    )
-//                    {
-//                        Image(
-//                            painter = painterResource(R.drawable.ic_heart),
-//                            contentDescription = null,
-//                            modifier = Modifier
-//                                .fillMaxSize()
-//                                .padding(
-//                                    8.dp
-//                                )
-//                        )
-//                    }
+                    Surface(
+                        modifier = if (item.isFavorite)
+                            Modifier
+                                .height(40.dp)
+                                .width(40.dp)
+                                .align(Alignment.BottomEnd)
+                                .padding(
+                                    end = 14.dp,
+                                    bottom = 14.dp
+                                )
+                                .background(
+                                    colorResource(R.color.gray_favorite_bg),
+                                    shape = RoundedCornerShape(30.dp)
+                                )
+                                .clip(shape = RoundedCornerShape(30.dp))
+                        else
+                            Modifier
+                                .size(0.dp)
+                    )
+                    {
+                        Image(
+                            painter = painterResource(R.drawable.ic_heart),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .align(Alignment.Center)
+                                .padding(
+                                    5.dp
+                                )
+                        )
+                    }
                 }
             }
         }

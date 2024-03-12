@@ -3,7 +3,6 @@ package com.example.aspen_compose.presentation.main_screen.composable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -48,7 +47,7 @@ fun RecommendedLazyRow(
         itemsIndexed(recommendedCardData) { index, item ->
             Card(
                 onClick = {
-//                          navController.navigate("detailScreen")
+                          TODO()
                 },
                 modifier = Modifier
                     .height(125.dp)
@@ -65,12 +64,7 @@ fun RecommendedLazyRow(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-
                         .background(Color.White)
-                        .border(
-                            BorderStroke(1.dp, Color.White),
-                            shape = RoundedCornerShape(20.dp)
-                        )
                 )
                 {
                     Image(
@@ -80,11 +74,7 @@ fun RecommendedLazyRow(
                             .height(100.dp)
                             .fillMaxWidth()
                             .clip(RoundedCornerShape(20.dp))
-                            .padding(1.dp)
-                            .background(
-                                Color.White,
-                                shape = RoundedCornerShape(20.dp)
-                            ),
+                            .padding(2.dp),
                         contentScale = ContentScale.Crop,
                         alignment = Alignment.BottomCenter
                     )

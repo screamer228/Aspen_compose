@@ -10,7 +10,7 @@ import com.example.aspen_compose.presentation.welcome_screen.WelcomeScreen
 
 @Composable
 fun Navigation(
-    navController : NavHostController
+    navController: NavHostController
 ) {
     NavHost(
         navController = navController,
@@ -26,9 +26,9 @@ fun Navigation(
             )
         }
         composable("detailScreen/{index}") { navBackStackEntry ->
-            /* Extracting the id from the route */
+
             val index = navBackStackEntry.arguments?.getString("index")
-            /* We check if is null */
+
             index?.let {
                 DetailScreen(navController = navController, index = it.toInt())
             }

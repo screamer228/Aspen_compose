@@ -106,7 +106,7 @@ fun DetailScreen(
             horizontalArrangement = Arrangement.SpaceBetween
         )
         {
-            CoeurdesAlpes(
+            Label(
                 modifier = Modifier,
                 uiState.popularCardData.label
             )
@@ -238,7 +238,7 @@ fun Favorite(modifier: Modifier) {
 }
 
 @Composable
-fun CoeurdesAlpes(modifier: Modifier, label: String) {
+fun Label(modifier: Modifier, label: String) {
     Text(
         text = label,
         modifier = modifier,
@@ -291,7 +291,8 @@ fun RatingDetail(modifier: Modifier, rating: String) {
 fun Description(modifier: Modifier) {
     Text(
         text = stringResource(R.string.description_detail),
-        modifier = modifier
+        modifier = modifier,
+        lineHeight = 20.sp
     )
 }
 
@@ -359,8 +360,8 @@ fun FacilitiesImages(modifier: Modifier) {
 fun Facility(imageId: Int, text: String) {
     Box(
         modifier = Modifier
-            .height(70.dp)
-            .width(75.dp)
+            .height(75.dp)
+            .width(78.dp)
             .background(
                 colorResource(R.color.gray_light),
                 shape = RoundedCornerShape(16.dp)
@@ -373,7 +374,7 @@ fun Facility(imageId: Int, text: String) {
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .padding(
-                    top = 16.dp
+                    top = 12.dp
                 )
         )
         Text(
@@ -381,7 +382,7 @@ fun Facility(imageId: Int, text: String) {
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(
-                    bottom = 16.dp
+                    bottom = 12.dp
                 ),
             color = colorResource(R.color.gray),
             fontSize = 11.sp
