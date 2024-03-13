@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.aspen_compose.R
+import com.example.aspen_compose.presentation.common.TextMonserratSemiBold
 import com.example.aspen_compose.presentation.main_screen.composable.ButtonsLazyRow
 import com.example.aspen_compose.presentation.main_screen.composable.PopularLazyRow
 import com.example.aspen_compose.presentation.main_screen.composable.RecommendedLazyRow
@@ -168,11 +169,6 @@ fun ExploreAspen(modifier: Modifier) {
 
 @Composable
 fun Location(modifier: Modifier) {
-    val textStyle = TextStyle(
-        color = colorResource(R.color.gray_hard),
-        fontSize = 13.sp
-    )
-
     Row(
         modifier = modifier
     )
@@ -189,7 +185,11 @@ fun Location(modifier: Modifier) {
                 .padding(
                     horizontal = 6.dp
                 ),
-            style = textStyle
+            color = colorResource(R.color.gray_hard),
+            fontSize = 13.sp,
+            fontFamily = FontFamily(
+                Font(R.font.font_figtree_regular)
+            )
         )
         Image(
             painter = painterResource(R.drawable.ic_arrow_down),
@@ -202,14 +202,9 @@ fun Location(modifier: Modifier) {
 
 @Composable
 fun Popular(modifier: Modifier) {
-    Text(
-        text = stringResource(R.string.popular),
+    TextMonserratSemiBold(
         modifier = modifier,
-        fontSize = 20.sp,
-        fontWeight = FontWeight.ExtraBold,
-        fontFamily = FontFamily(
-            Font(R.font.font_montserrat_regular)
-        )
+        text = stringResource(R.string.popular)
     )
 }
 
@@ -219,20 +214,16 @@ fun SeeAll(modifier: Modifier) {
         text = stringResource(R.string.see_all),
         modifier = modifier,
         color = colorResource(R.color.travel),
+        fontSize = 14.sp,
         fontWeight = FontWeight.SemiBold
     )
 }
 
 @Composable
 fun Recommended(modifier: Modifier) {
-    Text(
-        text = "Recommended",
+    TextMonserratSemiBold(
         modifier = modifier,
-        fontSize = 20.sp,
-        fontWeight = FontWeight.ExtraBold,
-        fontFamily = FontFamily(
-            Font(R.font.font_montserrat_regular)
-        )
+        text = stringResource(R.string.recommended)
     )
 }
 

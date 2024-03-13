@@ -28,12 +28,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.aspen_compose.R
+import com.example.aspen_compose.presentation.common.TextMonserratSemiBold
 import com.example.aspen_compose.presentation.detail_screen.viewmodel.DetailViewModel
 
 @Composable
@@ -129,7 +132,7 @@ fun DetailScreen(
             modifier = Modifier
                 .padding(
                     top = 12.dp,
-                    end = 45.dp
+                    end = 36.dp
                 )
         )
         ReadMore(
@@ -141,7 +144,7 @@ fun DetailScreen(
         Facilities(
             modifier = Modifier
                 .padding(
-                    top = 20.dp
+                    top = 22.dp
                 )
         )
         FacilitiesImages(
@@ -167,7 +170,7 @@ fun DetailScreen(
             )
             ButtonBookNow(
                 modifier = Modifier
-                    .height(55.dp)
+                    .height(60.dp)
                     .width(240.dp)
                     .shadow(5.dp, RoundedCornerShape(16.dp))
             )
@@ -242,7 +245,10 @@ fun Label(modifier: Modifier, label: String) {
     Text(
         text = label,
         modifier = modifier,
-        fontSize = 28.sp,
+        fontSize = 25.sp,
+        fontFamily = FontFamily(
+            Font(R.font.font_montserrat_semibold)
+        ),
         fontWeight = FontWeight.SemiBold
     )
 }
@@ -253,6 +259,7 @@ fun ShowMap(modifier: Modifier) {
         text = stringResource(R.string.show_map),
         modifier = modifier,
         color = colorResource(R.color.travel),
+        fontSize = 14.sp,
         fontWeight = FontWeight.SemiBold
     )
 }
@@ -292,6 +299,11 @@ fun Description(modifier: Modifier) {
     Text(
         text = stringResource(R.string.description_detail),
         modifier = modifier,
+        fontSize = 14.sp,
+        fontFamily = FontFamily(
+            Font(R.font.font_figtree_regular)
+        ),
+        fontWeight = FontWeight.Medium,
         lineHeight = 20.sp
     )
 }
@@ -303,8 +315,9 @@ fun ReadMore(modifier: Modifier) {
     )
     {
         Text(
-            text = "Read more",
+            text = stringResource(R.string.read_more),
             color = colorResource(R.color.travel),
+            fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold
         )
         Image(
@@ -322,11 +335,9 @@ fun ReadMore(modifier: Modifier) {
 
 @Composable
 fun Facilities(modifier: Modifier) {
-    Text(
-        text = stringResource(R.string.facilities),
+    TextMonserratSemiBold(
         modifier = modifier,
-        fontSize = 20.sp,
-        fontWeight = FontWeight.SemiBold
+        text = stringResource(R.string.facilities)
     )
 }
 
@@ -360,8 +371,8 @@ fun FacilitiesImages(modifier: Modifier) {
 fun Facility(imageId: Int, text: String) {
     Box(
         modifier = Modifier
-            .height(75.dp)
-            .width(78.dp)
+            .height(78.dp)
+            .width(80.dp)
             .background(
                 colorResource(R.color.gray_light),
                 shape = RoundedCornerShape(16.dp)
@@ -399,6 +410,7 @@ fun Price(modifier: Modifier) {
         Text(
             text = stringResource(R.string.price),
             modifier = Modifier,
+            fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold
         )
         Text(
@@ -406,7 +418,10 @@ fun Price(modifier: Modifier) {
             modifier = Modifier,
             color = colorResource(R.color.green_dollars),
             fontSize = 24.sp,
-            fontWeight = FontWeight.ExtraBold
+            fontWeight = FontWeight.ExtraBold,
+            fontFamily = FontFamily(
+                Font(R.font.font_montserrat_semibold)
+            )
         )
     }
 }
@@ -415,7 +430,7 @@ fun Price(modifier: Modifier) {
 fun ButtonBookNow(modifier: Modifier) {
     Button(
         onClick = {
-
+            TODO()
         },
         modifier = modifier,
         enabled = true,
@@ -433,7 +448,10 @@ fun ButtonBookNow(modifier: Modifier) {
                 .padding(
                     end = 15.dp
                 ),
-            fontSize = 18.sp
+            fontSize = 17.sp,
+            fontFamily = FontFamily(
+                Font(R.font.font_figtree_semibold)
+            )
         )
         Image(
             painter = painterResource(R.drawable.ic_arrow_next),

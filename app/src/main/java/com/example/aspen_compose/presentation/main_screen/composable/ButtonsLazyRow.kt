@@ -8,7 +8,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -19,11 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.aspen_compose.R
+import com.example.aspen_compose.presentation.common.TextButtonSelected
+import com.example.aspen_compose.presentation.common.TextButtonUnselected
 import com.example.aspen_compose.utils.buttonPaddings
 
 @Composable
@@ -68,24 +67,21 @@ fun ButtonsLazyRow(modifier: Modifier) {
                 contentPadding = PaddingValues(0.dp)
             )
             {
-                Text(
-                    text = text,
+                if (index == selectedButtonIndex)
+                    TextButtonSelected(
+                        modifier = Modifier
+                            .padding(
+                                horizontal = 16.dp
+                            ),
+                        text = text
+                    )
+                else TextButtonUnselected(
                     modifier = Modifier
                         .padding(
                             horizontal = 16.dp
                         ),
-                    fontSize = 15.sp,
-                    color =
-                    if (index == selectedButtonIndex)
-                        colorResource(R.color.travel)
-                    else
-                        colorResource(R.color.gray),
-                    fontWeight = if (index == selectedButtonIndex)
-                        FontWeight.Bold
-                    else
-                        FontWeight.Normal
+                    text = text
                 )
-
             }
         }
     }

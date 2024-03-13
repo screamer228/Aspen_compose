@@ -25,6 +25,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,7 +49,7 @@ fun RecommendedLazyRow(
         itemsIndexed(recommendedCardData) { index, item ->
             Card(
                 onClick = {
-                          TODO()
+                    TODO()
                 },
                 modifier = Modifier
                     .height(125.dp)
@@ -86,7 +88,11 @@ fun RecommendedLazyRow(
                                 start = 4.dp,
                                 bottom = 4.dp
                             ),
-                        fontWeight = FontWeight.Bold
+                        fontSize = 13.sp,
+                        fontFamily = FontFamily(
+                            Font(R.font.font_figtree_semibold)
+                        ),
+                        fontWeight = FontWeight.ExtraBold
                     )
                     Surface(
                         modifier = Modifier

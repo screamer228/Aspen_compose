@@ -154,7 +154,10 @@ fun ButtonExplore(modifier: Modifier, navController: NavController) {
     {
         Text(
             text = stringResource(R.string.explore),
-            fontSize = 21.sp
+            fontSize = 18.sp,
+            fontFamily = FontFamily(
+                Font(R.font.font_figtree_semibold)
+            )
         )
     }
 }

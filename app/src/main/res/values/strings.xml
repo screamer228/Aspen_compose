@@ -38,4 +38,6 @@
     <string name="hotels">Hotels</string>
     <string name="food">Food</string>
     <string name="adventure">Adventure</string>
+    <string name="recommended">Recommended</string>
+    <string name="read_more">Read more</string>
 </resources>

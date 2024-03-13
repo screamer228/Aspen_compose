@@ -24,6 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -78,7 +80,7 @@ fun PopularLazyRow(
                             .align(Alignment.BottomStart)
                             .padding(
                                 start = 14.dp,
-                                bottom = 46.dp
+                                bottom = 44.dp
                             ),
                         color = colorResource(R.color.gray_hard_label_surface),
                         shape = RoundedCornerShape(20.dp)
@@ -90,9 +92,13 @@ fun PopularLazyRow(
                                 .align(Alignment.Center)
                                 .padding(
                                     vertical = 4.dp,
-                                    horizontal = 12.dp
+                                    horizontal = 11.dp
                                 ),
-                            color = Color.White
+                            color = Color.White,
+                            fontSize = 13.sp,
+                            fontFamily = FontFamily(
+                                Font(R.font.font_figtree_regular)
+                            )
                         )
                     }
                     Surface(
@@ -110,7 +116,7 @@ fun PopularLazyRow(
                             modifier = Modifier
                                 .padding(
                                     vertical = 5.dp,
-                                    horizontal = 12.dp
+                                    horizontal = 11.dp
                                 )
                         )
                         {
@@ -126,7 +132,10 @@ fun PopularLazyRow(
                             Text(
                                 text = item.rating,
                                 color = Color.White,
-                                fontSize = 11.sp
+                                fontSize = 11.sp,
+                                fontFamily = FontFamily(
+                                    Font(R.font.font_figtree_regular)
+                                )
                             )
                         }
                     }

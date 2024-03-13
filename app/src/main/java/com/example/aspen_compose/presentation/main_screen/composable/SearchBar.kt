@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aspen_compose.R
@@ -36,7 +38,8 @@ fun SearchBar(modifier: Modifier) {
                     .padding(
                         start = 8.dp
                     )
-            ) },
+            )
+        },
         placeholder = {
             Text(
                 stringResource(R.string.find_things_to_do),
@@ -44,9 +47,13 @@ fun SearchBar(modifier: Modifier) {
                     .padding(
                         vertical = 2.dp
                     ),
-                fontSize = 13.sp,
-                color = colorResource(R.color.gray)
-            ) },
+                fontSize = 14.sp,
+                color = colorResource(R.color.gray),
+                fontFamily = FontFamily(
+                    Font(R.font.font_figtree_regular)
+                )
+            )
+        },
         colors = TextFieldDefaults.colors(
             focusedContainerColor = colorResource(R.color.gray_light),
             unfocusedContainerColor = colorResource(R.color.gray_light),
