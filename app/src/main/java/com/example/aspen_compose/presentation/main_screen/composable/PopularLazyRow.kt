@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.aspen_compose.R
+import com.example.aspen_compose.navigation.ROUTE_DETAIL_SCREEN
 import com.example.aspen_compose.presentation.model.PopularCardData
 import com.example.aspen_compose.utils.itemLazyRowPadding
 
@@ -50,7 +51,7 @@ fun PopularLazyRow(
             Card(
                 onClick = {
                     navController.navigate(
-                        "detailScreen/$index"
+                        "$ROUTE_DETAIL_SCREEN$index"
                     )
                 },
                 modifier = Modifier

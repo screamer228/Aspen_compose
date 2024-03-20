@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.aspen_compose.R
+import com.example.aspen_compose.navigation.ROUTE_MAIN_SCREEN
 
 @Composable
 fun WelcomeScreen(navController: NavController) {
@@ -140,7 +141,7 @@ fun PlanYourVacation(modifier: Modifier) {
 fun ButtonExplore(modifier: Modifier, navController: NavController) {
     Button(
         onClick = {
-            navController.navigate("mainScreen")
+            navController.navigate(ROUTE_MAIN_SCREEN)
         },
         modifier = modifier,
         enabled = true,
