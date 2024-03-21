@@ -39,7 +39,7 @@ import com.example.aspen_compose.utils.itemLazyRowPadding
 @Composable
 fun PopularLazyRow(
     modifier: Modifier,
-    popularCardData: MutableList<PopularCardData>,
+    popularCardData: List<PopularCardData>,
     navController: NavController
 ) {
 

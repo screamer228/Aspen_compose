@@ -39,7 +39,7 @@ import com.example.aspen_compose.utils.itemLazyRowPadding
 @Composable
 fun RecommendedLazyRow(
     modifier: Modifier,
-    recommendedCardData: MutableList<RecommendedCardData>
+    recommendedCardData: List<RecommendedCardData>
 ) {
 
     LazyRow(
