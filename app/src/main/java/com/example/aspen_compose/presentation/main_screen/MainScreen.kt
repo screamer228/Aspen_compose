@@ -44,8 +44,6 @@ fun MainScreen(
         viewModel.getInitialState()
     )
 
-    viewModel.getStateData()
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -54,7 +52,6 @@ fun MainScreen(
                 top = 40.dp,
                 end = 20.dp
             )
-
     )
     {
         Row(

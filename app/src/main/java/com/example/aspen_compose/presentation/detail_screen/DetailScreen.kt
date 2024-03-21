@@ -47,10 +47,8 @@ fun DetailScreen(
 ) {
 
     val uiState by viewModel.uiState.observeAsState(
-        viewModel.getInitialState()
+        viewModel.getInitialState(index)
     )
-
-    viewModel.getStateByIndex(index)
 
     Column(
         modifier = Modifier

@@ -16,6 +16,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun getInitialState(): MainUiState {
+        getStateData()
         return getData()
     }
 }

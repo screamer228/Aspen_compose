@@ -16,7 +16,8 @@ class DetailViewModel : ViewModel() {
         _uiState.postValue(stateResult)
     }
 
-    fun getInitialState(): DetailUiState {
+    fun getInitialState(index: Int): DetailUiState {
+        getStateByIndex(index)
         return getDataByIndex(0)
     }
 }
