@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.aspen_compose.R
 import com.example.aspen_compose.presentation.common.TextMonserratSemiBold
+import com.example.aspen_compose.presentation.detail_screen.uistate.DetailUiState
 import com.example.aspen_compose.presentation.detail_screen.viewmodel.DetailViewModel
 
 @Composable
@@ -47,8 +48,10 @@ fun DetailScreen(
 ) {
 
     val uiState by viewModel.uiState.observeAsState(
-        viewModel.getInitialState(index)
+        DetailUiState()
     )
+
+    viewModel.getStateByIndex(index)
 
     Column(
         modifier = Modifier

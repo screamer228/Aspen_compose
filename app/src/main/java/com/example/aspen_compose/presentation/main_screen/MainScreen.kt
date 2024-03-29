@@ -33,6 +33,7 @@ import com.example.aspen_compose.presentation.main_screen.composable.Recommended
 import com.example.aspen_compose.presentation.main_screen.composable.SearchBar
 import com.example.aspen_compose.presentation.main_screen.viewmodel.MainViewModel
 import com.example.aspen_compose.utils.fillWidthOfParent
+import java.lang.IllegalStateException
 
 @Composable
 fun MainScreen(
@@ -40,9 +41,7 @@ fun MainScreen(
     navController: NavController
 ) {
 
-    val uiState by viewModel.uiState.observeAsState(
-        viewModel.getInitialState()
-    )
+    val uiState by viewModel.uiState.observeAsState()
 
     Column(
         modifier = Modifier
@@ -108,7 +107,7 @@ fun MainScreen(
                 )
                 //Custom Compose Util
                 .fillWidthOfParent(20.dp),
-            uiState.popularCardData,
+            uiState?.popularCardData ?: throw IllegalStateException(),
             navController
         )
         Recommended(
@@ -124,7 +123,7 @@ fun MainScreen(
                 )
                 //Custom Compose Util
                 .fillWidthOfParent(20.dp),
-            uiState.recommendedCardData
+            uiState?.recommendedCardData ?: throw IllegalStateException()
         )
     }
 }

@@ -29,7 +29,7 @@ fun TextButtonSelected(modifier: Modifier, text: String) {
     Text(
         text = text,
         modifier = modifier,
-        fontSize = 15.sp,
+        fontSize = 14.sp,
         color = colorResource(R.color.travel),
         fontFamily = FontFamily(
             Font(R.font.font_figtree_semibold)
@@ -43,7 +43,7 @@ fun TextButtonUnselected(modifier: Modifier, text: String) {
     Text(
         text = text,
         modifier = modifier,
-        fontSize = 15.sp,
+        fontSize = 14.sp,
         color = colorResource(R.color.gray),
         fontFamily = FontFamily(
             Font(R.font.font_figtree_regular)

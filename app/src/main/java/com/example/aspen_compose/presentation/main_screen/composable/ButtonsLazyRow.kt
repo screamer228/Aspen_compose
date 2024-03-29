@@ -1,6 +1,5 @@
 package com.example.aspen_compose.presentation.main_screen.composable
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
@@ -63,23 +62,16 @@ fun ButtonsLazyRow(modifier: Modifier) {
                         colorResource(R.color.gray_light)
                     else
                         Color.Transparent
-                ),
-                contentPadding = PaddingValues(0.dp)
+                )
             )
             {
                 if (index == selectedButtonIndex)
                     TextButtonSelected(
-                        modifier = Modifier
-                            .padding(
-                                horizontal = 16.dp
-                            ),
+                        modifier = Modifier,
                         text = text
                     )
                 else TextButtonUnselected(
-                    modifier = Modifier
-                        .padding(
-                            horizontal = 16.dp
-                        ),
+                    modifier = Modifier,
                     text = text
                 )
             }
